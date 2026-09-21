@@ -108,7 +108,7 @@ export const DashboardIncomeSavingsCard: React.FC<DashboardIncomeSavingsCardProp
       ) : (
         <View style={[styles.noIncomeContainer, { backgroundColor: colors.surfaceVariant }]}>
           <View style={styles.noIncomeTextGroup}>
-            <AppIcon name="information-circle-outline" size={18} color={colors.textSecondary} />
+            <AppIcon name="information-outline" size={18} color={colors.textSecondary} />
             <AppText variant="caption" color={colors.textSecondary} style={{ flex: 1, marginLeft: 6 }}>
               No income recorded for this month yet.
             </AppText>

@@ -6,7 +6,7 @@ import axios, {
 } from 'axios';
 import { API_CONFIG } from './api.config';
 import { handleAxiosError } from './apiError';
-import { authSessionStorage } from '@/services/storage';
+import { authSessionStorage } from '@/services/storage/repositories/auth-session.storage';
 
 /**
  * Enterprise Axios Instance Configuration

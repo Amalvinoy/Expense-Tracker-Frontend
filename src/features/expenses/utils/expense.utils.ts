@@ -228,3 +228,49 @@ export const groupExpensesByDate = (
     };
   });
 };
+
+/**
+ * Normalizes raw backend expense payloads into the canonical frontend Expense domain model.
+ * Maps backend `categoryNameSnapshot` to frontend `categoryName` and provides safe defaults.
+ */
+export function normalizeExpense(raw: any): Expense {
+  if (!raw || typeof raw !== 'object') {
+    return {
+      id: '',
+      userId: '',
+      amount: 0,
+      categoryId: '',
+      categoryName: 'Other',
+      categoryIcon: 'shape-outline',
+      paymentMethod: 'Other',
+      date: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+  }
+
+  const categoryName =
+    raw.categoryName ||
+    raw.categoryNameSnapshot ||
+    raw.category?.name ||
+    'Other';
+
+  const categoryIcon =
+    raw.categoryIcon ||
+    raw.category?.icon ||
+    'shape-outline';
+
+  return {
+    id: String(raw.id || raw._id || ''),
+    userId: String(raw.userId || ''),
+    amount: typeof raw.amount === 'number' ? raw.amount : Number(raw.amount) || 0,
+    categoryId: String(raw.categoryId || raw.category?.id || ''),
+    categoryName,
+    categoryIcon,
+    paymentMethod: raw.paymentMethod || 'Other',
+    note: raw.note || undefined,
+    date: raw.date ? new Date(raw.date).toISOString() : new Date().toISOString(),
+    createdAt: raw.createdAt ? new Date(raw.createdAt).toISOString() : new Date().toISOString(),
+    updatedAt: raw.updatedAt ? new Date(raw.updatedAt).toISOString() : new Date().toISOString(),
+  };
+}

@@ -393,7 +393,7 @@ export default function IncomeSavingsScreen() {
 
           {!financialSummary.hasIncomeRecorded ? (
             <View style={[styles.adviceBox, { backgroundColor: colors.surfaceVariant }]}>
-              <AppIcon name="information-circle-outline" size={16} color={colors.primary} />
+              <AppIcon name="information-outline" size={16} color={colors.primary} />
               <AppText variant="caption" color={colors.textSecondary} style={{ flex: 1, marginLeft: 6 }}>
                 Record your monthly income for {monthLabel} to unlock savings tracking and rate calculation.
               </AppText>

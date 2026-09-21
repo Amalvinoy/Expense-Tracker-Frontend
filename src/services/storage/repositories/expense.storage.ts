@@ -1,7 +1,7 @@
 import { storageService } from '../storage.service';
 import { STORAGE_KEYS } from '../storage.keys';
 import { Expense } from '@/features/expenses/types/expense.types';
-import { normalizeExpense } from '@/services/api/expenseApi';
+import { normalizeExpense } from '@/features/expenses/utils/expense.utils';
 
 /**
  * Local Expense Storage Repository.
